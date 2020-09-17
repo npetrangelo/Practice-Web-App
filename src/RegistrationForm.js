@@ -18,12 +18,8 @@ class RegistrationForm extends React.Component {
         };
     }
 
-    contains(target, pattern) {
-        var value = 0;
-        pattern.forEach(word => {
-            value += target.includes(word);
-        });
-        return (value === 1);
+    isValidName(name) {
+        return new RegExp(" ^[a-zA-Z]*$").test(name);
     }
 
     handleChange = (event) => {
@@ -37,10 +33,20 @@ class RegistrationForm extends React.Component {
     }
 
     handleSubmit = (event) => {
-        if (new RegExp(' \n123456789').test(this.state.firstName)) {
-            alert("Invalid First Name");
-        } else {
+        let canSubmit = true;
+        let message = "";
+        if (!this.isValidName(this.state.firstName)) {
+            canSubmit = false;
+            message += "\nInvalid First Name: Must contain letters";
+        }
+        if (!this.isValidName(this.state.lastName)) {
+            canSubmit = false;
+            message += "\nInvalid Last Name: Must contain letters";
+        }
+        if (canSubmit) {
             alert('A first name was submitted: ' + this.state.firstName);
+        } else {
+            alert(message);
         }
         event.preventDefault();
     }
