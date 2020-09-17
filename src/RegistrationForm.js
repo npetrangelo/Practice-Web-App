@@ -1,7 +1,21 @@
 import React from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Select from 'react-select';
 import App from "./App";
+
+const statusOptions = [
+    { value: 'undergrad', label: 'Undergraduate Student' },
+    { value: 'grad', label: 'Graduate Student' },
+    { value: 'prof', label: 'Professor' },
+    { value: 'industry', label: 'Industry Employee' },
+];
+
+const paymentOptions = [
+    { value: 'credit', label: 'Credit Card' },
+    { value: 'dedit', label: 'Dedit Card' },
+    { value: 'paypal', label: 'PayPal' },
+];
 
 class RegistrationForm extends React.Component {
     constructor(props) {
@@ -13,8 +27,8 @@ class RegistrationForm extends React.Component {
             email: '',
             school: '',
             startDate: new Date(),
-            status: '',
-            payment: '',
+            status: null,
+            payment: null,
         };
     }
 
@@ -30,6 +44,14 @@ class RegistrationForm extends React.Component {
         this.setState({
             startDate: date
         });
+    }
+
+    handleStatusChange = (selection) => {
+        this.setState({ status: selection });
+    }
+
+    handlePaymentChange = (selection) => {
+        this.setState({ payment: selection });
     }
 
     handleSubmit = (event) => {
@@ -52,6 +74,8 @@ class RegistrationForm extends React.Component {
     }
 
     render() {
+        const { statusOption } = this.state;
+        const { paymentOption } = this.state;
         return (
             <form onSubmit={this.handleSubmit}>
                 <label>
@@ -86,12 +110,12 @@ class RegistrationForm extends React.Component {
                 <br/>
                 <label>
                     Status:
-                    <input type="text" name='status' value={this.state.status} onChange={this.handleChange} />
+                    <Select value={this.state.status} onChange={this.handleStatusChange} options={statusOptions}/>
                 </label>
                 <br/>
                 <label>
                     Payment:
-                    <input type="text" name='payment' value={this.state.payment} onChange={this.handleChange} />
+                    <Select value={this.state.payment} onChange={this.handlePaymentChange} options={paymentOptions}/>
                 </label>
                 <br/>
                 <input type="submit" value="Submit" />
