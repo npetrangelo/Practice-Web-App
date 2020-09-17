@@ -11,9 +11,12 @@ class HomePage extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input type="submit" value="Register" />
-            </form>
+            <div>
+                <img src="https://i.ytimg.com/vi/suw63h_LQbU/maxresdefault.jpg" alt="Girl in a jacket" width="500" />
+                <form onSubmit={this.handleSubmit}>
+                    <input type="submit" value="Register" />
+                </form>
+            </div>
         );
     }
 }
