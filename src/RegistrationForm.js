@@ -1,4 +1,6 @@
 import React from 'react';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import App from "./App";
 
 class RegistrationForm extends React.Component {
@@ -10,21 +12,40 @@ class RegistrationForm extends React.Component {
             address: '',
             email: '',
             school: '',
-            date: new Date(),
+            startDate: new Date(),
             status: '',
             payment: '',
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleDateChange = this.handleDateChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    contains(target, pattern) {
+        var value = 0;
+        pattern.forEach(word => {
+            value += target.includes(word);
+        });
+        return (value === 1);
     }
 
     handleChange(event) {
         this.setState({[event.target.name]: event.target.value});
     }
 
+    handleDateChange(date) {
+        this.setState({
+            startDate: date
+        });
+    }
+
     handleSubmit(event) {
-        alert('A first name was submitted: ' + this.state.firstName);
+        if (new RegExp(' \n123456789').test(this.state.firstName)) {
+            alert("Invalid First Name");
+        } else {
+            alert('A first name was submitted: ' + this.state.firstName);
+        }
         event.preventDefault();
     }
 
@@ -53,22 +74,22 @@ class RegistrationForm extends React.Component {
                 <br/>
                 <label>
                     School:
-                    <input type="text" name='email' value={this.state.school} onChange={this.handleChange} />
+                    <input type="text" name='school' value={this.state.school} onChange={this.handleChange} />
                 </label>
                 <br/>
                 <label>
                     Date:
-                    <input type="text" name='email' value={this.state.date} onChange={this.handleChange} />
+                    <DatePicker selected={this.state.startDate} onChange={this.handleDateChange} />
                 </label>
                 <br/>
                 <label>
                     Status:
-                    <input type="text" name='email' value={this.state.status} onChange={this.handleChange} />
+                    <input type="text" name='status' value={this.state.status} onChange={this.handleChange} />
                 </label>
                 <br/>
                 <label>
                     Payment:
-                    <input type="text" name='email' value={this.state.payment} onChange={this.handleChange} />
+                    <input type="text" name='payment' value={this.state.payment} onChange={this.handleChange} />
                 </label>
                 <br/>
                 <input type="submit" value="Submit" />
