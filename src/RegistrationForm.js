@@ -33,7 +33,11 @@ class RegistrationForm extends React.Component {
     }
 
     isValidName(name) {
-        return new RegExp(" ^[a-zA-Z]*$").test(name);
+        return (/^[a-zA-Z]*$/.test(name) && name !== '');
+    }
+
+    isValidEmail(email) {
+        return (/\S+@\S+\.\S+/.test(email) && email !== '');
     }
 
     handleChange = (event) => {
@@ -64,6 +68,10 @@ class RegistrationForm extends React.Component {
         if (!this.isValidName(this.state.lastName)) {
             canSubmit = false;
             message += "\nInvalid Last Name: Must contain letters";
+        }
+        if (!this.isValidEmail(this.state.email)) {
+            canSubmit = false;
+            message += "\nInvalid Email Address: Must contain alphanumeric characters and @";
         }
         if (canSubmit) {
             alert('A first name was submitted: ' + this.state.firstName);
