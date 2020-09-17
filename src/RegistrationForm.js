@@ -16,10 +16,6 @@ class RegistrationForm extends React.Component {
             status: '',
             payment: '',
         };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleDateChange = this.handleDateChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     contains(target, pattern) {
@@ -30,17 +26,17 @@ class RegistrationForm extends React.Component {
         return (value === 1);
     }
 
-    handleChange(event) {
+    handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value});
     }
 
-    handleDateChange(date) {
+    handleDateChange = (date) => {
         this.setState({
             startDate: date
         });
     }
 
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         if (new RegExp(' \n123456789').test(this.state.firstName)) {
             alert("Invalid First Name");
         } else {
