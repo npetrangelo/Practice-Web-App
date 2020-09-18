@@ -5,6 +5,7 @@ import App from './App';
 import RegistrationForm from './RegistrationForm';
 import HomePage from "./HomePage";
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
