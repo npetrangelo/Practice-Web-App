@@ -6,19 +6,15 @@ import RegistrationForm from './RegistrationForm';
 import HomePage from "./HomePage";
 import ConfirmationPage from "./ConfirmationPage";
 import RegisteredPage from "./RegisteredPage";
+import PracticeApp from "./PracticeApp";
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
+let form = <Route exact path="/form" component={RegistrationForm} />;
+
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/form" component={RegistrationForm} />
-        <Route exact path="/confirm" component={ConfirmationPage} />
-        <Route exact path="/complete" component={RegisteredPage} />
-      </Switch>
-    </BrowserRouter>
+    <PracticeApp />
   </React.StrictMode>,
   document.getElementById('root')
 );

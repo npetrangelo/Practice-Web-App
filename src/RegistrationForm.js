@@ -22,6 +22,7 @@ class RegistrationForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            authenticated: false,
             firstName: '',
             lastName: '',
             address: '',
@@ -39,6 +40,12 @@ class RegistrationForm extends React.Component {
 
     isValidEmail(email) {
         return (/\S+@\S+\.\S+/.test(email) && email !== '');
+    }
+
+    isAuthenticated = () => {
+        return this.isValidName(this.state.firstName) &&
+               this.isValidName(this.state.lastName) &&
+               this.isValidEmail(this.state.email);
     }
 
     handleChange = (event) => {
@@ -79,6 +86,7 @@ class RegistrationForm extends React.Component {
         } else {
             alert(message);
         }
+        this.state.authenticated = canSubmit;
         event.preventDefault();
     }
 
