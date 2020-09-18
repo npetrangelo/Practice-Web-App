@@ -2,9 +2,7 @@ import React from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from 'react-select';
-import {Link } from "react-router-dom";
 import {withRouter} from 'react-router';
-import App from "./App";
 
 const statusOptions = [
     { value: 'undergrad', label: 'Undergraduate Student' },
@@ -40,12 +38,6 @@ class RegistrationForm extends React.Component {
 
     isValidEmail(email) {
         return (/\S+@\S+\.\S+/.test(email) && email !== '');
-    }
-
-    isAuthenticated = () => {
-        return this.isValidName(this.state.firstName) &&
-               this.isValidName(this.state.lastName) &&
-               this.isValidEmail(this.state.email);
     }
 
     handleChange = (event) => {
@@ -91,8 +83,6 @@ class RegistrationForm extends React.Component {
     }
 
     render() {
-        const { statusOption } = this.state;
-        const { paymentOption } = this.state;
         return (
             <form onSubmit={this.handleSubmit}>
                 <label>

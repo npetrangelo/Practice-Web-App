@@ -8,7 +8,6 @@ import RegisteredPage from "./RegisteredPage";
 class PracticeApp extends React.Component {
     constructor(props) {
         super(props);
-        this.authenticated = false;
     }
 
     render() {
