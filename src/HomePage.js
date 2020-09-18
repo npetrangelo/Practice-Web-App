@@ -1,21 +1,18 @@
 import React from 'react';
+import {Link } from "react-router-dom";
 
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
     }
 
-    handleSubmit = (event) => {
-        alert('Registering');
-    }
-
     render() {
         return (
             <div>
-                <img src="https://i.ytimg.com/vi/suw63h_LQbU/maxresdefault.jpg" alt="Girl in a jacket" width="500" />
-                <form onSubmit={this.handleSubmit}>
-                    <input type="submit" value="Register" />
-                </form>
+                <img src="https://i.ytimg.com/vi/suw63h_LQbU/maxresdefault.jpg" alt="Boston" width="500" />
+                <Link to="/form">
+                    <button>Register</button>
+                </Link>
             </div>
         );
     }

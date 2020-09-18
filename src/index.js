@@ -9,7 +9,12 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <HomePage />
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+          <Route exact path="/form" component={RegistrationForm} />
+      </Switch>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
