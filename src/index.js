@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import RegistrationForm from './RegistrationForm';
 import HomePage from "./HomePage";
+import ConfirmationPage from "./ConfirmationPage";
+import RegisteredPage from "./RegisteredPage";
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -12,7 +14,9 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={HomePage} />
-          <Route exact path="/form" component={RegistrationForm} />
+        <Route exact path="/form" component={RegistrationForm} />
+        <Route exact path="/confirm" component={ConfirmationPage} />
+        <Route exact path="/complete" component={RegisteredPage} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,

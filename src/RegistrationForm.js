@@ -2,6 +2,7 @@ import React from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from 'react-select';
+import {Link } from "react-router-dom";
 import App from "./App";
 
 const statusOptions = [
@@ -126,7 +127,9 @@ class RegistrationForm extends React.Component {
                     <Select value={this.state.payment} onChange={this.handlePaymentChange} options={paymentOptions}/>
                 </label>
                 <br/>
-                <input type="submit" value="Submit" />
+                <Link to="/confirm">
+                    <input type="submit" value="Next" />
+                </Link>
             </form>
         );
     }
