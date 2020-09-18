@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from 'react-select';
 import {Link } from "react-router-dom";
+import {withRouter} from 'react-router';
 import App from "./App";
 
 const statusOptions = [
@@ -22,7 +23,6 @@ class RegistrationForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            authenticated: false,
             firstName: '',
             lastName: '',
             address: '',
@@ -81,13 +81,13 @@ class RegistrationForm extends React.Component {
             canSubmit = false;
             message += "\nInvalid Email Address: Must contain alphanumeric characters and @";
         }
+        event.preventDefault();
         if (canSubmit) {
             alert('A first name was submitted: ' + this.state.firstName);
+            this.props.history.push('/confirm');
         } else {
             alert(message);
         }
-        this.state.authenticated = canSubmit;
-        event.preventDefault();
     }
 
     render() {
@@ -135,12 +135,10 @@ class RegistrationForm extends React.Component {
                     <Select value={this.state.payment} onChange={this.handlePaymentChange} options={paymentOptions}/>
                 </label>
                 <br/>
-                <Link to="/confirm">
-                    <input type="submit" value="Next" />
-                </Link>
+                <input type="submit" value="Next" />
             </form>
         );
     }
 }
 
-export default RegistrationForm;
+export default withRouter(RegistrationForm);

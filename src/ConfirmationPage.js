@@ -9,6 +9,34 @@ class ConfirmationPage extends React.Component {
     render() {
         return (
             <div>
+                <label>
+                    Name:
+                </label>
+                <br/>
+                <label>
+                    Address:
+                </label>
+                <br/>
+                <label>
+                    Email:
+                </label>
+                <br/>
+                <label>
+                    School:
+                </label>
+                <br/>
+                <label>
+                    Date:
+                </label>
+                <br/>
+                <label>
+                    Status:
+                </label>
+                <br/>
+                <label>
+                    Payment:
+                </label>
+                <br/>
                 <Link to="/form">
                     <button>Back</button>
                 </Link>
