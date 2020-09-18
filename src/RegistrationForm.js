@@ -83,7 +83,7 @@ class RegistrationForm extends React.Component {
         }
         event.preventDefault();
         if (canSubmit) {
-            alert('A first name was submitted: ' + this.state.firstName);
+            alert('All fields valid!');
             this.props.history.push('/confirm');
         } else {
             alert(message);
